@@ -37,7 +37,7 @@ Clone the repository to your local development environment using the following c
 ``` 
 bash
 Copy code
-git clone https://github.com/Hipostel/chimp-house.git 
+git clone https://github.com/t-phoenix/chimp-house.git 
 ```
 
 Navigate to the project directory:
