@@ -28,4 +28,13 @@ contract("Hipostel Token", ( accounts )=>{
         console.log("Add1:", String(balanceAcc1));
         console.log("Add2:", String(balanceAcc2));
     })
+    it("should delegate votes to self", async()=>{
+        const votingBefore = await contractInstance.getVotes(accounts[0]);
+        console.log("Voting Power Before:", String(votingBefore));
+        const res = await contractInstance.delegate(accounts[0]);
+        const votingAfter = await contractInstance.getVotes(accounts[0]);
+        console.log("Voting Power After Delegation: ", String(votingAfter));
+        const delegates = await contractInstance.delegates(accounts[0]);
+        console.log("Account 0 delegates to: ", delegates);
+    })
 })
