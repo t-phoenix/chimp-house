@@ -1,22 +1,41 @@
 import { useState } from 'react';
-import { TypeAnimation } from 'react-type-animation';
+// import { TypeAnimation } from 'react-type-animation';
+import {Routes, Route} from 'react-router-dom';
+// import TokenManager from './pages/TokenManager';
+// import GovernorManager from './pages/GovernorManager';
 import './App.css';
+import TokenManager from './pages/TokenManager';
+import GovernorManager from './pages/GovernorManager';
+import Navbar from './components/Navbar';
+import HomePage from './pages/HomePage';
 
 function App() {
-  const [typingAnimationTextColor, setTypingAnimationTextColor] =
-    useState('pink');
+  // const [typingAnimationTextColor, setTypingAnimationTextColor] =
+  //   useState('pink');
 
   return (
     <div className='container min-h-screen flex justify-center content-center flex-col'>
-      <div className='text-6xl py-2'>🐒</div>
+
+      <div>
+
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<HomePage />}/>
+          <Route path="/token-manager" element={<TokenManager />}/>
+          <Route path="/governor-manager" element={<GovernorManager />}/>
+
+        </Routes>
+      </div>
+
+      {/* <div className='text-6xl py-2'>🦧</div>
       <div>
         <h1 className='scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl'>
           Chimp House
         </h1>
-      </div>
+      </div> */}
 
       {/* Typing Animation */}
-      <div className='flex flex-row justify-center content-center text-xl sm:text-2xl md:text-3xl py-4'>
+      {/* <div className='flex flex-row justify-center content-center text-xl sm:text-2xl md:text-3xl py-4'>
         <h2>{`Club For\u00A0`}</h2>
         <h2 style={{ color: typingAnimationTextColor }}>
           <TypeAnimation
@@ -62,8 +81,11 @@ function App() {
             className='inline-block'
           />
         </h2>
-      </div>
+      </div> */}
+
+
     </div>
+
   );
 }
 
