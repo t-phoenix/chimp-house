@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.20+commit.a1b79de6"
+		"version": "0.8.8+commit.dddeac2f"
 	},
 	"language": "Solidity",
 	"output": {
@@ -737,23 +737,6 @@
 			}
 		],
 		"devdoc": {
-			"events": {
-				"Approval(address,address,uint256)": {
-					"details": "Emitted when the allowance of a `spender` for an `owner` is set by a call to {approve}. `value` is the new allowance."
-				},
-				"DelegateChanged(address,address,address)": {
-					"details": "Emitted when an account changes their delegate."
-				},
-				"DelegateVotesChanged(address,uint256,uint256)": {
-					"details": "Emitted when a token transfer or delegate change results in changes to a delegate's number of votes."
-				},
-				"EIP712DomainChanged()": {
-					"details": "MAY be emitted to signal that the domain could have changed."
-				},
-				"Transfer(address,address,uint256)": {
-					"details": "Emitted when `value` tokens are moved from one account (`from`) to another (`to`). Note that `value` may be zero."
-				}
-			},
 			"kind": "dev",
 			"methods": {
 				"CLOCK_MODE()": {
@@ -853,13 +836,13 @@
 		"compilationTarget": {
 			"contracts/HipostelToken.sol": "HipostelToken"
 		},
-		"evmVersion": "shanghai",
+		"evmVersion": "london",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": true,
+			"enabled": false,
 			"runs": 200
 		},
 		"remappings": []
@@ -1042,11 +1025,11 @@
 			]
 		},
 		"contracts/HipostelToken.sol": {
-			"keccak256": "0xaabc2d4af7f2d72358eab3bfb53b611aee0f56730becdaec0ffe85e00047d6b9",
+			"keccak256": "0x7e0153be78102d09cb0fd106d5b42d414a68ec198e5ab5c48cee90ebd3d302e5",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://3495f254c7d7ce7727ff1a52877d7973b00aad532bf673edad988e3c92c9df8d",
-				"dweb:/ipfs/Qma5MofwiLvpcLPR6fNHH3KxaSJJ3dn6sMaey4aBWDqPbc"
+				"bzz-raw://f926dd9a3dc22508b615fbe21d9da17abd9be431006d3befc7e509a83605f9dd",
+				"dweb:/ipfs/QmSGTz3ZKLGTyNKCb3pQriEFJ3UM4EeFsaa7s2VbzhX2bs"
 			]
 		}
 	},
