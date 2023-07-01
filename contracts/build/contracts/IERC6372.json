@@ -28,7 +28,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"CLOCK_MODE\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"clock\",\"outputs\":[{\"internalType\":\"uint48\",\"name\":\"\",\"type\":\"uint48\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"CLOCK_MODE()\":{\"details\":\"Description of the clock\"},\"clock()\":{\"details\":\"Clock used for flagging checkpoints. Can be overridden to implement timestamp based checkpoints (and voting).\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"@openzeppelin/contracts/interfaces/IERC6372.sol\":\"IERC6372\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/interfaces/IERC6372.sol\":{\"keccak256\":\"0xcaea9aeda3816ba872358c828f4f01455c22ae48ced49c4c7d72bd74176c09b9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://16ff22d8df5aee94510ee43d361b6147caef164941a684cedcb75be44f351fe6\",\"dweb:/ipfs/QmaCCwMdHVdPApuEJHLZapSJyA7mp5dAugpma3VUzWGd8E\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.19+commit.7dd6d404\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"CLOCK_MODE\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"clock\",\"outputs\":[{\"internalType\":\"uint48\",\"name\":\"\",\"type\":\"uint48\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"CLOCK_MODE()\":{\"details\":\"Description of the clock\"},\"clock()\":{\"details\":\"Clock used for flagging checkpoints. Can be overridden to implement timestamp based checkpoints (and voting).\"}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/.deps/npm/@openzeppelin/contracts/interfaces/IERC6372.sol\":\"IERC6372\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/.deps/npm/@openzeppelin/contracts/interfaces/IERC6372.sol\":{\"keccak256\":\"0xcaea9aeda3816ba872358c828f4f01455c22ae48ced49c4c7d72bd74176c09b9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://16ff22d8df5aee94510ee43d361b6147caef164941a684cedcb75be44f351fe6\",\"dweb:/ipfs/QmaCCwMdHVdPApuEJHLZapSJyA7mp5dAugpma3VUzWGd8E\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -37,20 +37,20 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\n// OpenZeppelin Contracts (last updated v4.9.0) (interfaces/IERC6372.sol)\n\npragma solidity ^0.8.0;\n\ninterface IERC6372 {\n    /**\n     * @dev Clock used for flagging checkpoints. Can be overridden to implement timestamp based checkpoints (and voting).\n     */\n    function clock() external view returns (uint48);\n\n    /**\n     * @dev Description of the clock\n     */\n    // solhint-disable-next-line func-name-mixedcase\n    function CLOCK_MODE() external view returns (string memory);\n}\n",
-  "sourcePath": "@openzeppelin/contracts/interfaces/IERC6372.sol",
+  "sourcePath": "/Users/abhinil/Desktop/chimp-house/contracts/contracts/.deps/npm/@openzeppelin/contracts/interfaces/IERC6372.sol",
   "ast": {
-    "absolutePath": "@openzeppelin/contracts/interfaces/IERC6372.sol",
+    "absolutePath": "project:/contracts/.deps/npm/@openzeppelin/contracts/interfaces/IERC6372.sol",
     "exportedSymbols": {
       "IERC6372": [
-        239
+        16940
       ]
     },
-    "id": 240,
+    "id": 16941,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 226,
+        "id": 16927,
         "literals": [
           "solidity",
           "^",
@@ -58,7 +58,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "107:23:4"
+        "src": "107:23:57"
       },
       {
         "abstract": false,
@@ -67,48 +67,48 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 239,
+        "id": 16940,
         "linearizedBaseContracts": [
-          239
+          16940
         ],
         "name": "IERC6372",
-        "nameLocation": "142:8:4",
+        "nameLocation": "142:8:57",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "documentation": {
-              "id": 227,
+              "id": 16928,
               "nodeType": "StructuredDocumentation",
-              "src": "157:133:4",
+              "src": "157:133:57",
               "text": " @dev Clock used for flagging checkpoints. Can be overridden to implement timestamp based checkpoints (and voting)."
             },
             "functionSelector": "91ddadf4",
-            "id": 232,
+            "id": 16933,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "clock",
-            "nameLocation": "304:5:4",
+            "nameLocation": "304:5:57",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 228,
+              "id": 16929,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "309:2:4"
+              "src": "309:2:57"
             },
             "returnParameters": {
-              "id": 231,
+              "id": 16932,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 230,
+                  "id": 16931,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 232,
-                  "src": "335:6:4",
+                  "scope": 16933,
+                  "src": "335:6:57",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -116,10 +116,10 @@
                     "typeString": "uint48"
                   },
                   "typeName": {
-                    "id": 229,
+                    "id": 16930,
                     "name": "uint48",
                     "nodeType": "ElementaryTypeName",
-                    "src": "335:6:4",
+                    "src": "335:6:57",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint48",
                       "typeString": "uint48"
@@ -128,48 +128,48 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "334:8:4"
+              "src": "334:8:57"
             },
-            "scope": 239,
-            "src": "295:48:4",
+            "scope": 16940,
+            "src": "295:48:57",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           },
           {
             "documentation": {
-              "id": 233,
+              "id": 16934,
               "nodeType": "StructuredDocumentation",
-              "src": "349:48:4",
+              "src": "349:48:57",
               "text": " @dev Description of the clock"
             },
             "functionSelector": "4bf5d7e9",
-            "id": 238,
+            "id": 16939,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
             "name": "CLOCK_MODE",
-            "nameLocation": "464:10:4",
+            "nameLocation": "464:10:57",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 234,
+              "id": 16935,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "474:2:4"
+              "src": "474:2:57"
             },
             "returnParameters": {
-              "id": 237,
+              "id": 16938,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 236,
+                  "id": 16937,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 238,
-                  "src": "500:13:4",
+                  "scope": 16939,
+                  "src": "500:13:57",
                   "stateVariable": false,
                   "storageLocation": "memory",
                   "typeDescriptions": {
@@ -177,10 +177,10 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 235,
+                    "id": 16936,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
-                    "src": "500:6:4",
+                    "src": "500:6:57",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage_ptr",
                       "typeString": "string"
@@ -189,21 +189,21 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "499:15:4"
+              "src": "499:15:57"
             },
-            "scope": 239,
-            "src": "455:60:4",
+            "scope": 16940,
+            "src": "455:60:57",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 240,
-        "src": "132:385:4",
+        "scope": 16941,
+        "src": "132:385:57",
         "usedErrors": []
       }
     ],
-    "src": "107:411:4"
+    "src": "107:411:57"
   },
   "compiler": {
     "name": "solc",
@@ -211,7 +211,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.13",
-  "updatedAt": "2023-06-17T22:43:52.989Z",
+  "updatedAt": "2023-07-01T15:10:17.905Z",
   "devdoc": {
     "kind": "dev",
     "methods": {
