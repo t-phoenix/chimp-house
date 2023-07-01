@@ -12,7 +12,7 @@ function TokenManager() {
     
 
     return(
-        <div style={{ height: '100%', width: '100%' }}>
+        <div style={{ height: '100%', width: '100%' }} className="text-white">
             <h1>Hipostel (HIP) Token Contract: {HIPtoken}</h1>
             <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
                 <StaticData />

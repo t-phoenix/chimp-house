@@ -4,6 +4,8 @@ import TokenManager from './pages/TokenManager';
 import GovernorManager from './pages/GovernorManager';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
+import CreateProposal from './pages/CreateProposal';
+import ProposalDetails from './pages/ProposalDetails';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='/token-manager' element={<TokenManager />} />
         <Route path='/governor-manager' element={<GovernorManager />} />
+        <Route path='/create-proposal' element={<CreateProposal />} />
+        <Route path='/proposal-details/:id' element={<ProposalDetails />} />
       </Routes>
     </div>
   );
