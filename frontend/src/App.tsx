@@ -7,7 +7,7 @@ import HomePage from './pages/HomePage';
 
 function App() {
   return (
-    <div className='min-h-screen flex justify-start content-center flex-col bg-primary-gradient'>
+    <div className='min-h-screen flex justify-start content-center flex-col bg-background'>
       {/* Navigation Bar - common */}
       <Navbar />
 
