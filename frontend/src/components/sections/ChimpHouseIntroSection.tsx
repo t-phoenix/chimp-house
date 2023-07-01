@@ -1,41 +1,6 @@
-import { useEffect, useRef } from 'react';
-import { motion, useAnimate, stagger, useInView } from 'framer-motion';
-
-const staggerListItems = stagger(0.1, { startDelay: 0.15 });
-
-function useMenuAnimation(isInView: boolean) {
-  const [scope, animate] = useAnimate();
-
-  useEffect(() => {
-    animate(
-      'ul',
-      {
-        clipPath: isInView
-          ? 'inset(0% 0% 0% 0% round 10px)'
-          : 'inset(10% 50% 90% 50% round 10px)',
-      },
-      {
-        type: 'spring',
-        bounce: 0,
-        duration: 0.5,
-      }
-    );
-
-    animate(
-      'li',
-      isInView
-        ? { opacity: 1, scale: 1, filter: 'blur(0px)' }
-        : { opacity: 0, scale: 0.3, filter: 'blur(20px)' },
-      {
-        duration: 0.3,
-        delay: isInView ? staggerListItems : 0,
-      }
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isInView]);
-
-  return scope;
-}
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import useMenuAnimation from '../../helper/hooks/useMenuAnimation';
 
 function ChimpHouseIntroSection() {
   const ref = useRef(null);
@@ -56,24 +21,31 @@ function ChimpHouseIntroSection() {
       >
         What is Chimp House?
       </motion.div>
-      <motion.div
-        ref={ref}
-        className='w-100 lg:w-1/2 flex flex-col justify-center content-center place-self-start lg:place-self-center px-12'
-      >
-        <ul
-          style={{
-            clipPath: 'inset(10% 50% 90% 50% round 10px)',
-          }}
-          className='list-check-circle list-disc list-outside text-left text-2xl font-medium leading-10'
+      <div className='w-100 lg:w-1/2 flex flex-col justify-center content-center place-self-start lg:place-self-center px-12'>
+        <motion.p
+          initial={{ opacity: 0, translateX: -20 }}
+          whileInView={{ opacity: 1, translateX: 0 }}
+          transition={{ duration: 1 }}
+          className='text-left italic text-2xl font-light pb-10'
         >
-          <li> NFT Themed Space</li>
-          <li> Co-working Zones</li>
-          <li> NFT Themed Space</li>
-          <li> Hub For Events</li>
-          <li> In-house Cafe</li>
-          <li> Exclusive Destinations</li>
-        </ul>
-      </motion.div>
+          Co-living space for like-minded web3 OG builders
+        </motion.p>
+        <motion.div ref={ref}>
+          <ul
+            style={{
+              clipPath: 'inset(10% 50% 90% 50% round 10px)',
+            }}
+            className='list-check-circle list-disc list-outside text-left text-2xl font-medium leading-10 space-y-2'
+          >
+            <li>NFT Themed Space</li>
+            <li>Co-working Zones</li>
+            <li>NFT Themed Space</li>
+            <li>Hub For Events</li>
+            <li>In-house Cafe</li>
+            <li>Exclusive Destinations</li>
+          </ul>
+        </motion.div>
+      </div>
     </section>
   );
 }
