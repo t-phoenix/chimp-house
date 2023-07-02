@@ -1,14 +1,17 @@
+import React from 'react';
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
-import { Alert, AlertDescription, AlertTitle } from '../../components/ui/alert';
-import { Button } from '../../components/ui/button';
+import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
+import { Button } from '../ui/button';
 import { ReactNode } from 'react';
 
-const TokenForm = ({
+const CommonForm = ({
   legendTitle,
   formDescription,
   isErrored = false,
   onErrorCTAClick,
   onErrorCTA = 'Retry',
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  onFormSubmit = () => {},
   children,
 }: {
   legendTitle: string;
@@ -16,12 +19,13 @@ const TokenForm = ({
   isErrored?: boolean;
   onErrorCTAClick?: () => void;
   onErrorCTA?: string;
+  onFormSubmit?: React.FormEventHandler<HTMLFormElement>;
   children: ReactNode;
 }) => {
   return (
-    <form>
+    <form onSubmit={onFormSubmit}>
       <fieldset className='bg-accent rounded p-8 m-4 lg:m-20'>
-        <legend className='bg-secondary px-4 py-2 rounded uppercase font-bold text-2xl border-white border'>
+        <legend className='bg-secondary px-4 py-2 rounded uppercase font-bold text-2xl text-white border-white border'>
           {legendTitle}
         </legend>
 
@@ -44,7 +48,7 @@ const TokenForm = ({
           </>
         ) : (
           <>
-            <p className='font-medium pb-8'>{formDescription}</p>
+            <p className='font-medium pb-8 text-white'>{formDescription}</p>
             {children}
           </>
         )}
@@ -53,4 +57,4 @@ const TokenForm = ({
   );
 };
 
-export default TokenForm;
+export default CommonForm;

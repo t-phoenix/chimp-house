@@ -7,7 +7,7 @@ import { TokenABI, HIPtoken } from '../../helper/contract';
 import { Label } from '../ui/label';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
-import TokenForm from './TokenForm';
+import CommonForm from '../shared/CommonForm';
 // import "../../styles/proposalstyle.css";
 
 export default function Delegate() {
@@ -38,7 +38,7 @@ export default function Delegate() {
     console.log('AFTRE DELEGATION ATTEMPT:', delegation);
   }
   return (
-    <TokenForm
+    <CommonForm
       legendTitle='Delegate Votes'
       formDescription='Delegate votes to yourself or another address to initialise voting
     power.'
@@ -65,6 +65,6 @@ export default function Delegate() {
           Delegate
         </Button>
       </div>
-    </TokenForm>
+    </CommonForm>
   );
 }

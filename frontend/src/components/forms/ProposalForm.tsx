@@ -1,119 +1,142 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
-import React, { useEffect, useState } from "react";
-import { SimpliFactoryABI } from "../../ContractABIs/FactoryABI";
+import React, { useEffect, useState } from 'react';
+import { SimpliFactoryABI } from '../../ContractABIs/FactoryABI';
 import FormField from '../FormField';
 // import '../../styles/proposalstyle.css';
-import { useAccount, usePrepareContractWrite, useContractWrite, useProvider } from 'wagmi';
-import { prepareWriteContract, writeContract } from "@wagmi/core";
-import { Factory1_Addr } from "../../constants/ContractAddress";
-import { useLocation, useNavigate } from "react-router-dom";
+import {
+  useAccount,
+  usePrepareContractWrite,
+  useContractWrite,
+  useProvider,
+} from 'wagmi';
+import { prepareWriteContract, writeContract } from '@wagmi/core';
+import { Factory1_Addr } from '../../constants/ContractAddress';
+import { useLocation, useNavigate } from 'react-router-dom';
 // import { SimpliGovernorABI } from "../../ContractABIs/GovernorABI";
-import { ethers } from "ethers";
+import { ethers } from 'ethers';
 // import { ERC20TokenABI } from "../../ContractABIs/ERC20TokenABI";
-import { HIPGovernor, HIPtoken, TokenABI, GovernorABI } from "../../helper/contract";
-import { getLinkedAddress, toWeiDenomination } from "../../helper/formatter";
-
-
-
-
+import {
+  HIPGovernor,
+  HIPtoken,
+  TokenABI,
+  GovernorABI,
+} from '../../helper/contract';
+import { getLinkedAddress, toWeiDenomination } from '../../helper/formatter';
+import CommonForm from '../shared/CommonForm';
+import { Label } from '../ui/label';
+import { Input } from '../ui/input';
+import { Button } from '../ui/button';
+import { Textarea } from '../ui/textarea';
 
 export default function ProposalForm() {
+  // const { state }= useLocation()
+  // const DAOdata = state?.data;
+  // console.log("MY Location DATA:", state.daoAddr, DAOdata);
+  const provider = useProvider();
+  const account = useAccount();
+  console.log('Check Connected Account:', account.address);
 
-    // const { state }= useLocation()
-    // const DAOdata = state?.data;
-    // console.log("MY Location DATA:", state.daoAddr, DAOdata);
-    const provider = useProvider();
-    const account = useAccount();
-    console.log("Check Connected Account:", account.address);
+  const [proposalForm, setProposalForm] = useState({
+    token: '',
+    sendTo: '',
+    amount: '',
+    description: '',
+  });
 
-    const [proposalForm, setProposalForm] = useState({
-        token: '',
-        sendTo: '',
-        amount: '',
-        description: ''
+  const token = new ethers.Contract(HIPtoken, TokenABI, provider);
+
+  useEffect(() => {
+    setProposalForm({ ...proposalForm, token: HIPtoken });
+  }, []);
+
+  async function handleCreateProposalClick() {
+    console.log('USER INPUTS:', proposalForm);
+    const calldata = token.interface.encodeFunctionData('transfer', [
+      proposalForm.sendTo,
+      String(toWeiDenomination(Number(proposalForm.amount))),
+    ]);
+
+    const config = await prepareWriteContract({
+      address: HIPGovernor,
+      abi: GovernorABI,
+      functionName: 'propose',
+      args: [[HIPtoken], [0], [calldata], proposalForm.description],
     });
 
+    const { hash } = await writeContract(config);
+    console.log('Propsoal Hash:', hash);
+  }
 
-    const token = new ethers.Contract(HIPtoken, TokenABI, provider);
+  const handleFormFieldChange = (fieldName, e) => {
+    setProposalForm({ ...proposalForm, [fieldName]: e.target.value });
+  };
 
-    useEffect(()=>{
-        setProposalForm({...proposalForm, token: HIPtoken})
-    },[])
-    
+  return (
+    <>
+      {/* <h2>DAO Address: {state.daoAddr}</h2> */}
+      <CommonForm
+        legendTitle='DAO Token Expense Form'
+        formDescription='Make sure you have enough delegated voting power to create proposal.
+          Use Token Screen to delegate votes based on token balance.'
+      >
+        <div className='grid grid-cols-2 w-full max-w-sm items-center gap-1.5'>
+          <Label className='flex items-start text-left text-sm uppercase font-medium text-gray-200'>
+            ERC20 Token
+          </Label>
+          <Input
+            type='text'
+            placeholder='Address'
+            onChange={(e) => handleFormFieldChange('token', e)}
+            value={proposalForm.token}
+            className='bg-white text-black'
+            required
+            readOnly={proposalForm.token !== ''}
+          />
 
-    async function CreateProposalButton() {
-        console.log("USER INPUTS:", proposalForm);
-        const calldata = token.interface.encodeFunctionData('transfer', [proposalForm.sendTo, String(toWeiDenomination(Number(proposalForm.amount)))]);
+          <Label className='flex items-start text-left text-sm uppercase font-medium text-gray-200'>
+            Receiver
+          </Label>
+          <Input
+            type='text'
+            placeholder='0xabcd'
+            onChange={(e) => handleFormFieldChange('sendTo', e)}
+            value={proposalForm.sendTo}
+            className='bg-white text-black'
+            required
+          />
 
-        const config = await prepareWriteContract({
-            address: HIPGovernor,
-            abi: GovernorABI,
-            functionName: 'propose',
-            args: [[HIPtoken], [0], [calldata], proposalForm.description]
-        })
+          <Label className='flex items-start text-left text-sm uppercase font-medium text-gray-200'>
+            Amount
+          </Label>
+          <Input
+            type='number'
+            placeholder='in ETH Domination'
+            onChange={(e) => handleFormFieldChange('sendTo', e)}
+            value={proposalForm.sendTo}
+            className='bg-white text-black'
+            required
+          />
 
-        const { hash } = await writeContract(config);
-        console.log("Propsoal Hash:", hash);
-
-    }
-
-
-    const handleFormFieldChange = (fieldName, e) => {
-        setProposalForm({ ...proposalForm, [fieldName]: e.target.value })
-    }
-
-    return (
-        <div className="formContainer">
-            {/* <h2>DAO Address: {state.daoAddr}</h2> */}
-            <form className="formInputs">
-
-                <h3 style={{marginBlock: '24px'}}>DAO Token Expense form</h3>
-                {/* <a href={getLinkedAddress(DAOdata[3])} target="blank" style={{ fontSize: '14px', marginBlock: '8px' }}>{DAOdata[3]}</a> */}
-
-                <FormField
-                    labelName="ERC20 Token"
-                    placeholder="address"
-                    inputType="text"
-                    value={proposalForm.token}
-                    handleChange={(e) => handleFormFieldChange('token', e)}
-                />
-
-                <FormField
-                    labelName="Receiver"
-                    placeholder="address"
-                    inputType="text"
-                    value={proposalForm.sendTo}
-                    handleChange={(e) => handleFormFieldChange('sendTo', e)}
-                />
-
-                <FormField
-                    labelName="Amount"
-                    placeholder="in ETH denomination"
-                    inputType="numeric"
-                    value={proposalForm.amount}
-                    handleChange={(e) => handleFormFieldChange('amount', e)}
-                />
-
-                <FormField
-                    labelName="Description"
-                    placeholder="of proposal"
-                    inputType="text"
-                    value={proposalForm.description}
-
-                    handleChange={(e) => handleFormFieldChange('description', e)}
-                />
-
-
-                <p align='left' style={{width: '100%'}}> Make sure you have enough delegated voting power to create proposal. Use Token Screen to delegate votes based on token balance.</p>
-
-
-
-            </form>
-            <button onClick={CreateProposalButton}>
-                Create propsal
-            </button>
+          <Label className='flex items-start text-left text-sm uppercase font-medium text-gray-200'>
+            Description
+          </Label>
+          <Textarea
+            placeholder='Write description of proposal'
+            value={proposalForm.description}
+            onChange={(e) => handleFormFieldChange('description', e)}
+            className='bg-white text-black'
+            required
+          />
         </div>
-    )
 
+        <div className='flex flex-row space-x-6 mt-8'>
+          <Button variant='outline' onClick={handleCreateProposalClick}>
+            Create Proposal
+          </Button>
+        </div>
+      </CommonForm>
+    </>
+  );
 }
