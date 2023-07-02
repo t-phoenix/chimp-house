@@ -6,7 +6,7 @@ import { HIPtoken, TokenABI } from '../../helper/contract';
 // import "../../styles/proposalstyle.css";
 // import FormField from "../FormField";
 import { toETHdenomination } from '../../helper/formatter';
-import TokenForm from './TokenForm';
+import CommonForm from '../shared/CommonForm';
 
 export default function StaticData() {
   // const [tokenAddr, setTokenAddr] = React.useState();
@@ -56,7 +56,7 @@ export default function StaticData() {
   }
 
   return (
-    <TokenForm
+    <CommonForm
       isErrored={!result}
       onErrorCTA='Re-fetch Data'
       onErrorCTAClick={fetchTokenData}
@@ -108,6 +108,6 @@ export default function StaticData() {
           </div>
         </div>
       </div>
-    </TokenForm>
+    </CommonForm>
   );
 }

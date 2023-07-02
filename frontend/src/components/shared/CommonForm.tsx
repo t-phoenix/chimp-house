@@ -1,9 +1,9 @@
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
-import { Alert, AlertDescription, AlertTitle } from '../../components/ui/alert';
-import { Button } from '../../components/ui/button';
+import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
+import { Button } from '../ui/button';
 import { ReactNode } from 'react';
 
-const TokenForm = ({
+const CommonForm = ({
   legendTitle,
   formDescription,
   isErrored = false,
@@ -53,4 +53,4 @@ const TokenForm = ({
   );
 };
 
-export default TokenForm;
+export default CommonForm;

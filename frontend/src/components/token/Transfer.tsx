@@ -5,7 +5,7 @@ import { toWeiDenomination } from '../../helper/formatter';
 import { Label } from '../ui/label';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
-import TokenForm from './TokenForm';
+import CommonForm from '../shared/CommonForm';
 
 export default function Transfer() {
   const [sendTo, setSendTo] = useState('');
@@ -27,7 +27,7 @@ export default function Transfer() {
   }
 
   return (
-    <TokenForm legendTitle='Transfer Tokens'>
+    <CommonForm legendTitle='Transfer Tokens'>
       <div className='grid grid-cols-2 w-full max-w-sm items-center gap-1.5'>
         <Label className='flex items-start text-left text-sm uppercase font-medium text-gray-200'>
           Send To
@@ -59,6 +59,6 @@ export default function Transfer() {
           Transfer
         </Button>
       </div>
-    </TokenForm>
+    </CommonForm>
   );
 }
