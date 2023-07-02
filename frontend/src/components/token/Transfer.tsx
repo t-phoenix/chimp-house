@@ -1,54 +1,69 @@
-// @ts-nocheck
-import React, { useEffect, useState } from "react";
-import { useContractWrite, usePrepareContractWrite } from "wagmi";
-import FormField from "../FormField";
-import { TokenABI, HIPtoken } from "../../helper/contract";
-import { toWeiDenomination } from "../../helper/formatter";
+import { useState } from 'react';
+import { useContractWrite, usePrepareContractWrite } from 'wagmi';
+import FormField from '../FormField';
+import { TokenABI, HIPtoken } from '../../helper/contract';
+import { toWeiDenomination } from '../../helper/formatter';
+import { Label } from '../ui/label';
+import { Input } from '../ui/input';
+import { Button } from '../ui/button';
 
-export default function Transfer (){
-    const [sendTo, setSendTo] = useState('');
-    const [amount, setAmount] = useState(0);
+export default function Transfer() {
+  const [sendTo, setSendTo] = useState('');
+  const [amount, setAmount] = useState(0);
 
-    const { config } = usePrepareContractWrite({
-        address: HIPtoken,
-        abi: TokenABI,
-        functionName: 'transfer',
-        args: [sendTo, String(toWeiDenomination(amount))]
-    })
-    const {data, write} = useContractWrite(config)
+  const { config } = usePrepareContractWrite({
+    address: HIPtoken,
+    abi: TokenABI,
+    functionName: 'transfer',
+    args: [sendTo, String(toWeiDenomination(amount))],
+  });
+  const { data, write } = useContractWrite(config);
 
-    function HandleTransfer(){
-        console.log("-->", HIPtoken, sendTo,': ', toWeiDenomination(amount));
-       
-        const transfer = write();
-        console.log("AFTRE TRANSFER ATTEMPT:", transfer);
+  function HandleTransfer() {
+    console.log('-->', HIPtoken, sendTo, ': ', toWeiDenomination(amount));
 
-    }
+    const transfer = write?.();
+    console.log('AFTRE TRANSFER ATTEMPT:', transfer);
+  }
 
-    return(
-        <div className="formContainer" style={{borderWidth: 2, display: 'flex', flexDirection:'column',  justifyContent: "center", margin: 4, padding: 8}}>
-            <form className="formInputs">
-                <h4>Transfer Tokens</h4>
-                {/* <p align="left" >Delegate votes to yourself or another address to initialise voting power.</p> */}
-                <FormField 
-                    labelName="Send To"
-                    placeholder="address"
-                    inputType="text"
-                    value={sendTo}
-                    handleChange={(e)=> setSendTo(e.target.value)}
-                />
-                <FormField 
-                    labelName="Amount"
-                    placeholder="token"
-                    inputType="numeric"
-                    value={amount}
-                    handleChange={(e) => setAmount(e.target.value)}
-                />                
-            </form>
+  return (
+    <form>
+      <fieldset className='bg-accent rounded p-8 m-4 lg:m-20'>
+        <legend className='bg-secondary px-4 py-2 rounded uppercase font-bold text-2xl border-white border'>
+          Transfer Tokens
+        </legend>
+        <div className='grid grid-cols-2 w-full max-w-sm items-center gap-1.5'>
+          <Label className='flex items-start text-left text-sm uppercase font-medium text-gray-200'>
+            Send To
+          </Label>
+          <Input
+            type='text'
+            placeholder='0xabcd'
+            onChange={(e) => setSendTo(e.target.value)}
+            value={sendTo}
+            className='bg-white text-black'
+            required
+          />
 
-            <button onClick={HandleTransfer} style={{borderWidth: 2, borderRadius: 16, paddingInline: 12, paddingBlock: 16}}>
-                    Submit Transaction
-            </button>
+          <Label className='flex items-start text-left text-sm uppercase font-medium text-gray-200'>
+            Amount
+          </Label>
+          <Input
+            type='number'
+            placeholder='0xabcd'
+            onChange={(e) => setAmount(parseInt(e.target.value))}
+            value={amount}
+            className='bg-white text-black'
+            required
+          />
         </div>
-    )
+
+        <div className='flex flex-row space-x-6 mt-8'>
+          <Button variant='outline' onClick={HandleTransfer}>
+            Transfer
+          </Button>
+        </div>
+      </fieldset>
+    </form>
+  );
 }
