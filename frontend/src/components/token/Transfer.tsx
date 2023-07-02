@@ -5,6 +5,7 @@ import { toWeiDenomination } from '../../helper/formatter';
 import { Label } from '../ui/label';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
+import TokenForm from './TokenForm';
 
 export default function Transfer() {
   const [sendTo, setSendTo] = useState('');
@@ -26,43 +27,38 @@ export default function Transfer() {
   }
 
   return (
-    <form>
-      <fieldset className='bg-accent rounded p-8 m-4 lg:m-20'>
-        <legend className='bg-secondary px-4 py-2 rounded uppercase font-bold text-2xl border-white border'>
-          Transfer Tokens
-        </legend>
-        <div className='grid grid-cols-2 w-full max-w-sm items-center gap-1.5'>
-          <Label className='flex items-start text-left text-sm uppercase font-medium text-gray-200'>
-            Send To
-          </Label>
-          <Input
-            type='text'
-            placeholder='0xabcd'
-            onChange={(e) => setSendTo(e.target.value)}
-            value={sendTo}
-            className='bg-white text-black'
-            required
-          />
+    <TokenForm legendTitle='Transfer Tokens'>
+      <div className='grid grid-cols-2 w-full max-w-sm items-center gap-1.5'>
+        <Label className='flex items-start text-left text-sm uppercase font-medium text-gray-200'>
+          Send To
+        </Label>
+        <Input
+          type='text'
+          placeholder='0xabcd'
+          onChange={(e) => setSendTo(e.target.value)}
+          value={sendTo}
+          className='bg-white text-black'
+          required
+        />
 
-          <Label className='flex items-start text-left text-sm uppercase font-medium text-gray-200'>
-            Amount
-          </Label>
-          <Input
-            type='number'
-            placeholder='0xabcd'
-            onChange={(e) => setAmount(parseInt(e.target.value))}
-            value={amount}
-            className='bg-white text-black'
-            required
-          />
-        </div>
+        <Label className='flex items-start text-left text-sm uppercase font-medium text-gray-200'>
+          Amount
+        </Label>
+        <Input
+          type='number'
+          placeholder='0xabcd'
+          onChange={(e) => setAmount(parseInt(e.target.value))}
+          value={amount}
+          className='bg-white text-black'
+          required
+        />
+      </div>
 
-        <div className='flex flex-row space-x-6 mt-8'>
-          <Button variant='outline' onClick={HandleTransfer}>
-            Transfer
-          </Button>
-        </div>
-      </fieldset>
-    </form>
+      <div className='flex flex-row space-x-6 mt-8'>
+        <Button variant='outline' onClick={HandleTransfer}>
+          Transfer
+        </Button>
+      </div>
+    </TokenForm>
   );
 }
