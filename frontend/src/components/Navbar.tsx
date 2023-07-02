@@ -46,6 +46,12 @@ export default function Navbar() {
         >
           <Link to='/governor-manager'>DAO Manager</Link>
         </Button>
+        {/* <Button
+          asChild
+          variant={location.pathname === '/nft' ? 'outline' : 'ghost'}
+        >
+          <Link to='/nft'>NFT</Link>
+        </Button> */}
       </div>
 
       <Web3Button />

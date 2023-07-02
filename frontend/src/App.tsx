@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
 import CreateProposal from './pages/CreateProposal';
 import ProposalDetails from './pages/ProposalDetails';
+import NFTPage from './pages/NFTPage';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path='/governor-manager' element={<GovernorManager />} />
         <Route path='/create-proposal' element={<CreateProposal />} />
         <Route path='/proposal-details/:id' element={<ProposalDetails />} />
+        <Route path='/nft' element={<NFTPage />} />
       </Routes>
     </div>
   );
