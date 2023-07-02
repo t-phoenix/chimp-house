@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useContractWrite, usePrepareContractWrite } from 'wagmi';
-import FormField from '../FormField';
 import { TokenABI, HIPtoken } from '../../helper/contract';
 import { toWeiDenomination } from '../../helper/formatter';
 import { Label } from '../ui/label';
@@ -17,7 +16,7 @@ export default function Transfer() {
     functionName: 'transfer',
     args: [sendTo, String(toWeiDenomination(amount))],
   });
-  const { data, write } = useContractWrite(config);
+  const { write } = useContractWrite(config);
 
   function HandleTransfer() {
     console.log('-->', HIPtoken, sendTo, ': ', toWeiDenomination(amount));
