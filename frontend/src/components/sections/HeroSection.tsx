@@ -24,6 +24,10 @@ function HeroSection() {
         }}
         transition={{ ease: 'easeOut', duration: HERO_HEADING_DURATION }}
         className='text-9xl py-4 scale-95'
+        whileHover={{
+          scale: HERO_HEADING_INITIAL_SCALE,
+        }}
+        layout
       >
         🦧
       </motion.div>
