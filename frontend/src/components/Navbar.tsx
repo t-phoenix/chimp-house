@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Web3Button } from '@web3modal/react';
 import { Button } from './ui/button';
@@ -9,6 +9,8 @@ import {
 } from './sections/HeroSection';
 
 export default function Navbar() {
+  const location = useLocation();
+
   return (
     <motion.nav
       animate={{ translateY: 0, opacity: HERO_HEADING_FINAL_OPACITY }}
@@ -29,11 +31,19 @@ export default function Navbar() {
         </div>
       </Link>
 
-      <div>
-        <Button asChild variant='ghost' className='font-medium mx-1'>
+      <div className='space-x-2 font-medium'>
+        <Button
+          asChild
+          variant={location.pathname === '/token-manager' ? 'outline' : 'ghost'}
+        >
           <Link to='/token-manager'>Token Manager</Link>
         </Button>
-        <Button asChild variant='ghost' className='font-medium mx-1'>
+        <Button
+          asChild
+          variant={
+            location.pathname === '/governor-manager' ? 'outline' : 'ghost'
+          }
+        >
           <Link to='/governor-manager'>DAO Manager</Link>
         </Button>
       </div>
