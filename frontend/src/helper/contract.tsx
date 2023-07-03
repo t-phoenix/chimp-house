@@ -1,6 +1,6 @@
 export const HIPtoken = '0xAa6E4B6259cC8aFBeAd31E13301C4fCf4D2Da0e2';
 export const HIPGovernor = '0x3c6A22D1ad76D38513C581B1cF2da8F247BeCdba';
-export const HIP_NFT = '0x002A8904642d7208DDB656d8df4Df55189ba299D';
+export const HIP_NFT = '0x9aaa66EAD37dFd05ff8470aF9D143bCBE1497c97';
 
 export const TokenABI = [
 	{
@@ -2050,16 +2050,16 @@ export const NFT_ABI = [
 	},
 	{
 		"inputs": [],
-		"name": "mintNFT",
+		"name": "mintFREENFT",
 		"outputs": [],
 		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
 		"inputs": [],
-		"name": "privateMint",
+		"name": "mintNFT",
 		"outputs": [],
-		"stateMutability": "nonpayable",
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{

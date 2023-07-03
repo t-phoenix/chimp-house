@@ -1,20 +1,25 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import { prepareWriteContract } from "@wagmi/core";
+import React from "react";
+import { prepareWriteContract, writeContract,  } from "@wagmi/core";
 import { Button } from "../components/ui/button";
 import { motion } from "framer-motion";
 import { HIP_NFT, NFT_ABI } from "../helper/contract";
 import { toETHdenomination } from "../helper/formatter";
+import { ethers } from 'ethers'
+
 
 function NFTPage() {
-  const MINT_PRICE = '10000000000000000';
+  const MINT_PRICE = '0.1' ;
+
+  const [result, setResult] = React.useState('');
 
   async function buyNFT() {
     const config = await prepareWriteContract({
       address: HIP_NFT,
       abi: NFT_ABI,
       functionName: "mintNFT",
-      value: MINT_PRICE,
+      value: ethers.utils.parseEther('0.1'),
     });
     console.log("Configuration",config);
 
@@ -22,14 +27,28 @@ function NFTPage() {
     console.log("Propsoal Hash:", hash);
   }
 
-  function mintNFT() {}
+  async function mintNFT() {
+    const config = await prepareWriteContract({
+      address: HIP_NFT,
+      abi: NFT_ABI,
+      functionName: "mintFREENFT",
+    });
+    console.log("Configuration",config);
+
+    const { hash } = await writeContract(config);
+    console.log("Propsoal Hash:", hash);
+    setResult(hash);
+
+  }
 
   return (
     <section>
       <h1 className="text-4xl font-extrabold tracking-tight lg:text-6xl text-accent drop-shadow-sm py-10">
         NFTs
       </h1>
-      <h3 className="pb-4 text-white">Mint Price: {toETHdenomination(MINT_PRICE)} FTM</h3>
+      <h3 className="pb-4 text-white">NFT Contract: FREE</h3>
+
+      <h3 className="pb-4 text-white">Mint Price: {MINT_PRICE} FTM</h3>
       <div className="bg-accent mx-8 lg:mx-20 rounded-lg">
         <div className="relative bg-gradient-to-b from-transparent to-black w-full h-full flex items-center justify-center py-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-4 lg:gap-6">
@@ -64,6 +83,21 @@ function NFTPage() {
               >
                 Buy NFT
               </Button>
+              <Button
+                className="text-2xl lg:text-4xl px-16 py-8 uppercase"
+                variant="default"
+                onClick={mintNFT}
+              >
+                MINT FREE NFT
+              </Button>
+              {
+                result ?
+                <>
+                  <p>Tansaction Hash: {result}</p>
+                </>
+                : <></>
+              }
+
 
             
           </motion.div>
