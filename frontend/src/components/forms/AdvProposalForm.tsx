@@ -63,15 +63,35 @@ export default function AdvProposalForm() {
     },
   });
 
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: 'You submitted the following values:',
-      description: (
-        <pre className='mt-2 w-[340px] rounded-md bg-slate-950 p-4'>
-          <code className='text-white'>{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
+  async function handleCreateProposalClick(data: z.infer<typeof formSchema>) {
+    // const calldata = token.interface.encodeFunctionData('transfer', [proposalForm.target, proposalForm.value]);
+    // console.log("USER INPUTS:", calldata);
+    const config = await prepareWriteContract({
+      address: HIPGovernor,
+      abi: GovernorABI,
+      functionName: 'propose',
+      args: [
+        data.targetContract,
+        data.valuesToSend,
+        data.callDatas,
+        data.description,
+      ],
     });
+
+    const { hash } = await writeContract(config);
+    console.log('Propsoal Hash:', hash);
+  }
+
+  function onSubmit(data: z.infer<typeof formSchema>) {
+    // toast({
+    //   title: 'You submitted the following values:',
+    //   description: (
+    //     <pre className='mt-2 w-[340px] rounded-md bg-slate-950 p-4'>
+    //       <code className='text-white'>{JSON.stringify(data, null, 2)}</code>
+    //     </pre>
+    //   ),
+    // });
+    handleCreateProposalClick(data);
   }
 
   const [proposalForm, setProposalForm] = useState({
@@ -82,25 +102,6 @@ export default function AdvProposalForm() {
   });
 
   const token = new ethers.Contract(HIPtoken, TokenABI, provider);
-
-  async function handleCreateProposalClick() {
-    // const calldata = token.interface.encodeFunctionData('transfer', [proposalForm.target, proposalForm.value]);
-    // console.log("USER INPUTS:", calldata);
-    const config = await prepareWriteContract({
-      address: HIPGovernor,
-      abi: GovernorABI,
-      functionName: 'propose',
-      args: [
-        proposalForm.target,
-        proposalForm.value,
-        proposalForm.calldata,
-        proposalForm.description,
-      ],
-    });
-
-    const { hash } = await writeContract(config);
-    console.log('Propsoal Hash:', hash);
-  }
 
   return (
     <CommonForm
@@ -208,7 +209,7 @@ export default function AdvProposalForm() {
         </div>
 
         <div className='flex flex-row space-x-6 mt-8'>
-          <Button variant='outline' onClick={handleCreateProposalClick}>
+          <Button variant='outline' type='submit'>
             Create Proposal
           </Button>
         </div>
