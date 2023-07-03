@@ -122,7 +122,7 @@ export default function AdvProposalForm() {
                 </FormLabel>
                 <FormControl>
                   <Input
-                    className='bg-white text-black'
+                    className='bg-white text-black font-mono'
                     placeholder='address[]'
                     {...field}
                   />
@@ -169,7 +169,7 @@ export default function AdvProposalForm() {
                 </FormLabel>
                 <FormControl>
                   <Input
-                    className='bg-white text-black'
+                    className='bg-white text-black font-mono'
                     placeholder='Encode Function Call'
                     {...field}
                   />

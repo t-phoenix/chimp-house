@@ -121,7 +121,7 @@ export default function ProposalList() {
                 <TableCell className='max-w-[6ch] truncate'>
                   {proposal?.proposalId}
                 </TableCell>
-                <TableCell className='max-w-[6ch] truncate'>
+                <TableCell className='max-w-[6ch] truncate font-mono'>
                   {proposal?.proposer}
                 </TableCell>
                 <TableCell>

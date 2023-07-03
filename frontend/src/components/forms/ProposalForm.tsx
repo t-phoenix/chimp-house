@@ -90,7 +90,7 @@ export default function ProposalForm() {
             placeholder='Address'
             onChange={(e) => handleFormFieldChange('token', e)}
             value={proposalForm.token}
-            className='bg-white text-black'
+            className='bg-white text-black font-mono'
             required
             readOnly={proposalForm.token !== ''}
           />
@@ -103,7 +103,7 @@ export default function ProposalForm() {
             placeholder='0xabcd'
             onChange={(e) => handleFormFieldChange('sendTo', e)}
             value={proposalForm.sendTo}
-            className='bg-white text-black'
+            className='bg-white text-black font-mono'
             required
           />
 
@@ -113,8 +113,8 @@ export default function ProposalForm() {
           <Input
             type='number'
             placeholder='in ETH Domination'
-            onChange={(e) => handleFormFieldChange('sendTo', e)}
-            value={proposalForm.sendTo}
+            onChange={(e) => handleFormFieldChange('amount', e)}
+            value={proposalForm.amount}
             className='bg-white text-black'
             required
           />

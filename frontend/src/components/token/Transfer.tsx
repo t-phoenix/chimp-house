@@ -27,7 +27,10 @@ export default function Transfer() {
   }
 
   return (
-    <CommonForm legendTitle='Transfer Tokens'>
+    <CommonForm
+      legendTitle='Transfer Tokens'
+      formDescription={`Import tokens in your Metamask wallet using contract address: ${HIPtoken}`}
+    >
       <div className='grid grid-cols-2 w-full max-w-sm items-center gap-1.5'>
         <Label className='flex items-start text-left text-sm uppercase font-medium text-gray-200'>
           Send To
@@ -46,7 +49,7 @@ export default function Transfer() {
         </Label>
         <Input
           type='number'
-          placeholder='0xabcd'
+          placeholder='Enter amount'
           onChange={(e) => setAmount(parseInt(e.target.value))}
           value={amount}
           className='bg-white text-black'

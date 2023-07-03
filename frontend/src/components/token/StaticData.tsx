@@ -101,9 +101,9 @@ export default function StaticData() {
 
         <div className='flex flex-col'>
           <div className='text-left text-sm uppercase font-medium text-gray-200'>
-            Onwer
+            Owner
           </div>
-          <div className='text-left text-2xl font-bold text-gray-50'>
+          <div className='text-left text-2xl font-bold text-gray-50 font-mono'>
             {result[2] || '-'}
           </div>
         </div>

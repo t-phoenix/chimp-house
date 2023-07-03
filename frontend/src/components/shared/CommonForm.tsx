@@ -48,7 +48,9 @@ const CommonForm = ({
           </>
         ) : (
           <>
-            <p className='font-medium pb-8 text-white'>{formDescription}</p>
+            <p className='font-medium pb-8 text-white break-all'>
+              {formDescription}
+            </p>
             {children}
           </>
         )}

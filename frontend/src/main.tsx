@@ -11,6 +11,7 @@ import {
 import { Web3Modal } from '@web3modal/react';
 import { configureChains, createClient, WagmiConfig } from 'wagmi';
 import { fantom, fantomTestnet } from 'wagmi/chains';
+import { Toaster } from '../src/components/ui/toaster';
 
 const chains = [fantom, fantomTestnet];
 const projectId = '0903962abc6c272e43c338b132b658c6';
@@ -32,5 +33,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     </WagmiConfig>
 
     <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
+    <Toaster />
   </React.StrictMode>
 );

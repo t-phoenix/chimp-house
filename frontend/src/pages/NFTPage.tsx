@@ -33,7 +33,7 @@ const NFT_ASSETS_URL = [
 ];
 
 function NFTPage() {
-  const MINT_PRICE = '0.1' ;
+  const MINT_PRICE = 'FREE';
 
   const [result, setResult] = React.useState('');
 
@@ -54,14 +54,13 @@ function NFTPage() {
     const config = await prepareWriteContract({
       address: HIP_NFT,
       abi: NFT_ABI,
-      functionName: "mintFREENFT",
+      functionName: 'mintFREENFT',
     });
-    console.log("Configuration",config);
+    console.log('Configuration', config);
 
     const { hash } = await writeContract(config);
-    console.log("Propsoal Hash:", hash);
+    console.log('Propsoal Hash:', hash);
     setResult(hash);
-
   }
 
   return (
@@ -69,12 +68,19 @@ function NFTPage() {
       <h1 className='text-4xl font-extrabold tracking-tight lg:text-6xl text-accent drop-shadow-sm py-10'>
         NFTs
       </h1>
-      <h3 className="pb-4 text-white">NFT Contract: FREE</h3>
+      <h3 className='pb-4 text-white'>
+        HIPPY NFT Contract Address: <span className='font-mono'>{HIP_NFT}</span>
+      </h3>
+      <h3 className='pb-4 text-white'>Mint Price: {MINT_PRICE}</h3>
+      {result ? (
+        <h3 className='pb-4 text-white'>
+          Transaction Hash: <span className='font-mono'>{result}</span>
+        </h3>
+      ) : null}
 
-      <h3 className="pb-4 text-white">Mint Price: {MINT_PRICE} FTM</h3>
-      <div className="bg-accent mx-8 lg:mx-20 rounded-lg">
-        <div className="relative bg-gradient-to-b from-transparent to-black w-full h-full flex items-center justify-center py-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-4 lg:gap-6">
+      <div className='bg-accent mx-8 lg:mx-20 rounded-lg'>
+        <div className='relative bg-gradient-to-b from-transparent to-black w-full h-full flex items-center justify-center py-8'>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-4 lg:gap-6'>
             {[...Array(9).keys()].map((_, index) => {
               return (
                 <img
@@ -97,31 +103,20 @@ function NFTPage() {
             layout
             className='absolute bottom-32 rounded-md'
           >
-            
-              {/* <Button
+            {/* <Button
                 className="text-2xl lg:text-4xl px-16 py-8 uppercase"
                 variant="default"
                 onClick={buyNFT}
               >
                 Buy NFT
               </Button> */}
-              <Button
-                className="text-2xl lg:text-4xl px-16 py-8 uppercase"
-                variant="default"
-                onClick={mintNFT}
-              >
-                MINT FREE NFT
-              </Button>
-              {
-                result ?
-                <>
-                  <p>Tansaction Hash: {result}</p>
-                </>
-                : <></>
-              }
-
-
-            
+            <Button
+              className='text-2xl lg:text-4xl px-16 py-8 uppercase'
+              variant='default'
+              onClick={mintNFT}
+            >
+              MINT FREE NFT
+            </Button>
           </motion.div>
         </div>
       </div>

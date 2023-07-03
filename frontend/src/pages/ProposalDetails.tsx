@@ -51,6 +51,7 @@ import {
 } from '../components/ui/form';
 import { toast } from '../components/ui/use-toast';
 import { Button } from '../components/ui/button';
+import CommonCard from '../components/shared/CommonCard';
 
 const VoteSchema = z.object({
   vote: z.union([z.literal('AGAINST'), z.literal('FOR'), z.literal('ABSTAIN')]),
@@ -259,7 +260,7 @@ export default function ProposalDetails() {
             <div className='text-left text-sm uppercase font-medium text-gray-200'>
               Governor Contract
             </div>
-            <div className='text-left text-2xl font-bold text-gray-50 break-all'>
+            <div className='text-left text-2xl font-bold text-gray-50 break-all font-mono'>
               {HIPGovernor}
             </div>
           </div>
@@ -268,7 +269,7 @@ export default function ProposalDetails() {
             <div className='text-left text-sm uppercase font-medium text-gray-200'>
               Proposer's Address
             </div>
-            <div className='text-left text-2xl font-bold text-gray-50 break-all'>
+            <div className='text-left text-2xl font-bold text-gray-50 break-all font-mono'>
               {state.proposal.proposer}
             </div>
           </div>
@@ -277,7 +278,7 @@ export default function ProposalDetails() {
             <div className='text-left text-sm uppercase font-medium text-gray-200'>
               Transaction Hash
             </div>
-            <div className='text-left text-2xl font-bold text-gray-50 break-all'>
+            <div className='text-left text-2xl font-bold text-gray-50 break-all font-mono'>
               {state.proposal.transactionHash}
             </div>
           </div>
@@ -333,7 +334,7 @@ export default function ProposalDetails() {
             <div className='text-left text-sm uppercase font-medium text-gray-200'>
               Amount Receiver
             </div>
-            <div className='text-left text-2xl font-bold text-gray-50 break-all'>
+            <div className='text-left text-2xl font-bold text-gray-50 break-all font-mono'>
               {decodeData.to}
             </div>
           </div>
@@ -352,42 +353,46 @@ export default function ProposalDetails() {
       </CommonForm>
 
       {state.proposal.proposalState == 1 ? (
-        <Form {...voteForm}>
-          <form
-            onSubmit={voteForm.handleSubmit(onVoteSubmit)}
-            className='w-2/3 space-y-6'
-          >
-            <FormField
-              control={voteForm.control}
-              name='vote'
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Vote</FormLabel>
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder='Select your vote' />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      <SelectItem value='AGAINST'>Against</SelectItem>
-                      <SelectItem value='FOR'>For</SelectItem>
-                      <SelectItem value='ABSTAIN'>Abstain</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <FormDescription>
-                    Check your voting power on token Screen before voting.
-                  </FormDescription>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button type='submit'>Vote</Button>
-          </form>
-        </Form>
+        <CommonCard legendTitle='Vote Here'>
+          <Form {...voteForm}>
+            <form
+              onSubmit={voteForm.handleSubmit(onVoteSubmit)}
+              className='space-y-6'
+            >
+              <FormField
+                control={voteForm.control}
+                name='vote'
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Your Vote</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder='Select your vote' />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value='AGAINST'>Against</SelectItem>
+                        <SelectItem value='FOR'>For</SelectItem>
+                        <SelectItem value='ABSTAIN'>Abstain</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <FormDescription>
+                      Check your voting power on token Screen before voting.
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type='submit' variant='outline'>
+                Vote
+              </Button>
+            </form>
+          </Form>
+        </CommonCard>
       ) : null}
 
       {state.proposal.proposalState == 2 ? (

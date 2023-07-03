@@ -1,6 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { HIPtoken, TokenABI } from '../../helper/contract';
 // import "../../styles/proposalstyle.css";
 import { readContract } from '@wagmi/core';
@@ -9,12 +9,15 @@ import { Label } from '../ui/label';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import CommonCard from '../shared/CommonCard';
+import { useToast } from '../ui/use-toast';
 
 export default function Balance() {
   // const [tokenAddr, setTokenAddr] = React.useState();
-  const [userAddr, setUserAddr] = React.useState('');
-  const [result, setResult] = React.useState('');
+  const [userAddr, setUserAddr] = useState('');
+  const [result, setResult] = useState('');
+  const [votes, setVotes] = useState('');
   // console.log("Inside Delegation Component", token)
+  const toast = useToast();
 
   useEffect(() => {
     // if (token) {
@@ -54,12 +57,12 @@ export default function Balance() {
       data,
       toETHdenomination(Number(data))
     );
-    setResult(Number(toETHdenomination(data)));
+    setVotes(Number(toETHdenomination(data)));
   }
 
   return (
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    <CommonCard legendTitle='Balance/Votes of Users'>
+    <CommonCard legendTitle='Balance or Votes of Users'>
       <div className='grid w-full max-w-sm items-center gap-1.5'>
         <Label
           htmlFor='userAddress'
@@ -86,9 +89,13 @@ export default function Balance() {
         </Button>
       </div>
 
-      {result? <div>
-        <p>Result: {result}</p>
-      </div>: <></>}
+      {result !== '' ? (
+        <div className='text-left font-bold pt-4'>Balance: {result}</div>
+      ) : null}
+
+      {votes !== '' ? (
+        <div className='text-left font-bold pt-4'>Votes: {votes}</div>
+      ) : null}
     </CommonCard>
   );
 }
