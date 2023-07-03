@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage';
 import CreateProposal from './pages/CreateProposal';
 import ProposalDetails from './pages/ProposalDetails';
 import NFTPage from './pages/NFTPage';
+// import NFTPage from './pages/NFTPage';
 
 function App() {
   return (

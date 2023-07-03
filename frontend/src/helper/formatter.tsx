@@ -1,6 +1,6 @@
 
 export function getLinkedAddress(address: string) {
-    return `https://mumbai.polygonscan.com/address/${address}`
+    return `https://testnet.ftmscan.com/${address}`
 }
 
 export function toETHdenomination(number: number){
