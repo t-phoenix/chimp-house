@@ -79,7 +79,7 @@ function HeroSection() {
               () => setTypingAnimationTextColor('darkorange'),
               'Musicians',
               1000,
-              () => setTypingAnimationTextColor('darkslateblue'),
+              () => setTypingAnimationTextColor('white'),
               'Technologists',
               1000,
               () => setTypingAnimationTextColor('firebrick'),
