@@ -84,7 +84,7 @@ module.exports = {
           hsl(40deg 100% 44%) 71%,
           hsl(40deg 100% 48%) 100%
         );`,
-        'blue-mesh': 'url("frontend/src/assets/mesh-712.png")',
+        'blue-mesh': 'url("mesh-712.png")',
       },
       listStyleImage: {
         'check-circle': 'url("/frontend/src/assets/check-circle.svg")',
