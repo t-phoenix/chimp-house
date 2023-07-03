@@ -24,7 +24,7 @@ import {
   GovernorABI,
 } from '../../helper/contract';
 import { getLinkedAddress, toWeiDenomination } from '../../helper/formatter';
-import CommonForm from '../shared/CommonForm';
+import CommonCard from '../shared/CommonCard';
 import { Label } from '../ui/label';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
@@ -76,7 +76,7 @@ export default function ProposalForm() {
   return (
     <>
       {/* <h2>DAO Address: {state.daoAddr}</h2> */}
-      <CommonForm
+      <CommonCard
         legendTitle='DAO Token Expense Form'
         formDescription='Make sure you have enough delegated voting power to create proposal.
           Use Token Screen to delegate votes based on token balance.'
@@ -136,7 +136,7 @@ export default function ProposalForm() {
             Create Proposal
           </Button>
         </div>
-      </CommonForm>
+      </CommonCard>
     </>
   );
 }

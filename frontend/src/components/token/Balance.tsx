@@ -8,7 +8,7 @@ import { toETHdenomination } from '../../helper/formatter';
 import { Label } from '../ui/label';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
-import CommonForm from '../shared/CommonForm';
+import CommonCard from '../shared/CommonCard';
 
 export default function Balance() {
   // const [tokenAddr, setTokenAddr] = React.useState();
@@ -59,7 +59,7 @@ export default function Balance() {
 
   return (
     // eslint-disable-next-line @typescript-eslint/no-empty-function
-    <CommonForm legendTitle='Balance/Votes of Users'>
+    <CommonCard legendTitle='Balance/Votes of Users'>
       <div className='grid w-full max-w-sm items-center gap-1.5'>
         <Label
           htmlFor='userAddress'
@@ -85,6 +85,6 @@ export default function Balance() {
           Get Votes
         </Button>
       </div>
-    </CommonForm>
+    </CommonCard>
   );
 }

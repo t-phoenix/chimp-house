@@ -1,17 +1,14 @@
-import React from 'react';
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
 import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
 import { Button } from '../ui/button';
 import { ReactNode } from 'react';
 
-const CommonForm = ({
+const CommonCard = ({
   legendTitle,
   formDescription,
   isErrored = false,
   onErrorCTAClick,
   onErrorCTA = 'Retry',
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onFormSubmit,
   children,
 }: {
   legendTitle: string;
@@ -19,11 +16,10 @@ const CommonForm = ({
   isErrored?: boolean;
   onErrorCTAClick?: () => void;
   onErrorCTA?: string;
-  onFormSubmit?: React.FormEventHandler<HTMLFormElement>;
   children: ReactNode;
 }) => {
   return (
-    <form onSubmit={onFormSubmit ?? undefined}>
+    <div>
       <fieldset className='bg-accent rounded-lg p-8 m-4 lg:m-20'>
         <legend className='bg-secondary px-4 py-2 rounded-lg uppercase font-bold text-2xl text-white border-white border'>
           {legendTitle}
@@ -53,8 +49,8 @@ const CommonForm = ({
           </>
         )}
       </fieldset>
-    </form>
+    </div>
   );
 };
 
-export default CommonForm;
+export default CommonCard;

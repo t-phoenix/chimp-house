@@ -16,7 +16,7 @@ import {
   TableHeader,
   TableRow,
 } from './ui/table';
-import CommonForm from './shared/CommonForm';
+import CommonCard from './shared/CommonCard';
 import { Button } from './ui/button';
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons';
 import { Alert, AlertDescription, AlertTitle } from './ui/alert';
@@ -88,7 +88,7 @@ export default function ProposalList() {
   // }
 
   return (
-    <CommonForm legendTitle='Your Proposals'>
+    <CommonCard legendTitle='Your Proposals'>
       {['idle', 'pending'].includes(proposalsRequestState) ? (
         <div>Loading your proposals...</div>
       ) : null}
@@ -149,6 +149,6 @@ export default function ProposalList() {
           </AlertDescription>
         </Alert>
       ) : null}
-    </CommonForm>
+    </CommonCard>
   );
 }
