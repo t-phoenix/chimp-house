@@ -68,7 +68,7 @@ export default function StaticData() {
             Name
           </div>
           <div className='text-left text-2xl font-bold text-gray-50'>
-            {result[0] || 'Ayush Gupta'}
+            {result[0] || '-'}
           </div>
         </div>
 
@@ -77,7 +77,7 @@ export default function StaticData() {
             Symbol
           </div>
           <div className='text-left text-2xl font-bold text-gray-50'>
-            {result[1] || 'HIP'}{' '}
+            {result[1] | '-'}
           </div>
         </div>
 
@@ -86,7 +86,7 @@ export default function StaticData() {
             Supply
           </div>
           <div className='text-left text-2xl font-bold text-gray-50'>
-            {toETHdenomination(Number(result[3]))}
+            {toETHdenomination(Number(result[3])) || '-'}
           </div>
         </div>
 
@@ -95,7 +95,7 @@ export default function StaticData() {
             Decimals
           </div>
           <div className='text-left text-2xl font-bold text-gray-50'>
-            {result[4] || '0133213'}
+            {result[4] || '-'}
           </div>
         </div>
 
@@ -104,7 +104,7 @@ export default function StaticData() {
             Onwer
           </div>
           <div className='text-left text-2xl font-bold text-gray-50'>
-            {result[2] || 'Abhinil'}
+            {result[2] || '-'}
           </div>
         </div>
       </div>

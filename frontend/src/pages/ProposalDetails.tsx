@@ -232,7 +232,7 @@ export default function ProposalDetails() {
             <div className='text-left text-sm uppercase font-medium text-gray-200'>
               Proposal Id
             </div>
-            <div className='text-left text-2xl font-bold text-gray-50'>
+            <div className='text-left text-2xl font-bold text-gray-50 break-all'>
               {state.proposal.proposalId}
             </div>
           </div>
@@ -259,7 +259,7 @@ export default function ProposalDetails() {
             <div className='text-left text-sm uppercase font-medium text-gray-200'>
               Governor Contract
             </div>
-            <div className='text-left text-2xl font-bold text-gray-50'>
+            <div className='text-left text-2xl font-bold text-gray-50 break-all'>
               {HIPGovernor}
             </div>
           </div>
@@ -268,7 +268,7 @@ export default function ProposalDetails() {
             <div className='text-left text-sm uppercase font-medium text-gray-200'>
               Proposer's Address
             </div>
-            <div className='text-left text-2xl font-bold text-gray-50'>
+            <div className='text-left text-2xl font-bold text-gray-50 break-all'>
               {state.proposal.proposer}
             </div>
           </div>
@@ -277,7 +277,7 @@ export default function ProposalDetails() {
             <div className='text-left text-sm uppercase font-medium text-gray-200'>
               Transaction Hash
             </div>
-            <div className='text-left text-2xl font-bold text-gray-50'>
+            <div className='text-left text-2xl font-bold text-gray-50 break-all'>
               {state.proposal.transactionHash}
             </div>
           </div>
@@ -286,7 +286,7 @@ export default function ProposalDetails() {
             <div className='text-left text-sm uppercase font-medium text-gray-200'>
               Voting Start (block)
             </div>
-            <div className='text-left text-2xl font-bold text-gray-50'>
+            <div className='text-left text-2xl font-bold text-gray-50 break-all'>
               {state.proposal.votingStartDate}
             </div>
           </div>
@@ -295,7 +295,7 @@ export default function ProposalDetails() {
             <div className='text-left text-sm uppercase font-medium text-gray-200'>
               Voting End (block)
             </div>
-            <div className='text-left text-2xl font-bold text-gray-50'>
+            <div className='text-left text-2xl font-bold text-gray-50 break-all'>
               {state.proposal.votingEndDate}
             </div>
           </div>
@@ -307,7 +307,7 @@ export default function ProposalDetails() {
                   Votes For
                 </div>
                 <div className='text-left text-2xl font-bold text-gray-50'>
-                  {toETHdenomination(Number(data[0].forVotes))}
+                  {toETHdenomination(Number(data?.[0]?.forVotes))}
                 </div>
               </div>
               <div className='flex flex-col'>
@@ -315,7 +315,7 @@ export default function ProposalDetails() {
                   Votes Against
                 </div>
                 <div className='text-left text-2xl font-bold text-gray-50'>
-                  {toETHdenomination(Number(data[0].againstVotes))}
+                  {toETHdenomination(Number(data?.[0]?.againstVotes))}
                 </div>
               </div>
               <div className='flex flex-col'>
@@ -323,7 +323,7 @@ export default function ProposalDetails() {
                   Votes Abstain
                 </div>
                 <div className='text-left text-2xl font-bold text-gray-50'>
-                  {toETHdenomination(Number(data[0].abstainVotes))}
+                  {toETHdenomination(Number(data?.[0]?.abstainVotes))}
                 </div>
               </div>
             </div>
@@ -333,10 +333,9 @@ export default function ProposalDetails() {
             <div className='text-left text-sm uppercase font-medium text-gray-200'>
               Amount Receiver
             </div>
-            <div className='text-left text-2xl font-bold text-gray-50'>
+            <div className='text-left text-2xl font-bold text-gray-50 break-all'>
               {decodeData.to}
             </div>
-            d
           </div>
 
           {data ? (
@@ -344,7 +343,7 @@ export default function ProposalDetails() {
               <div className='text-left text-sm uppercase font-medium text-gray-200'>
                 Amount
               </div>
-              <div className='text-left text-2xl font-bold text-gray-50'>
+              <div className='text-left text-2xl font-bold text-gray-50 break-all'>
                 {Number(decodeData.amount)} {data[1]}
               </div>
             </div>

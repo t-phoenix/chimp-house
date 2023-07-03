@@ -73,7 +73,7 @@ export default function StaticData() {
             Name
           </div>
           <div className='text-left text-2xl font-bold text-gray-50'>
-            {result[0] || 'Ayush Gupta'}
+            {result[0] || '-'}
           </div>
         </div>
 
@@ -82,7 +82,7 @@ export default function StaticData() {
             Token
           </div>
           <div className='text-left text-2xl font-bold text-gray-50'>
-            {result[1] || 'HIP'}
+            {result[1] || '-'}
           </div>
         </div>
 
@@ -91,16 +91,16 @@ export default function StaticData() {
             Proposal Threshold
           </div>
           <div className='text-left text-2xl font-bold text-gray-50'>
-            {toETHdenomination(Number(result[6]))}
+            {toETHdenomination(Number(result[6])) || '-'}
           </div>
         </div>
 
         <div className='flex flex-col'>
           <div className='text-left text-sm uppercase font-medium text-gray-200'>
-            VotingDelay
+            Voting Delay
           </div>
           <div className='text-left text-2xl font-bold text-gray-50'>
-            {Number(result[2]) || '1Day'}
+            {Number(result[2]) || '-'}
           </div>
         </div>
 
@@ -109,7 +109,7 @@ export default function StaticData() {
             Voting Period
           </div>
           <div className='text-left text-2xl font-bold text-gray-50'>
-            {Number(result[3]) || '7Days'}
+            {Number(result[3]) || '-'}
           </div>
         </div>
 
@@ -118,7 +118,9 @@ export default function StaticData() {
             Quorum:
           </div>
           <div className='text-left text-2xl font-bold text-gray-50'>
-            {Number(result[4])}/ {Number(result[5])}
+            {Number(result[4]) && Number(result[5])
+              ? `${Number(result[4]) / Number(result[5])}`
+              : '-'}
           </div>
         </div>
       </div>
