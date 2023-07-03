@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import React from 'react';
-import { prepareWriteContract } from '@wagmi/core';
+import { prepareWriteContract, writeContract } from '@wagmi/core';
 import { Button } from '../components/ui/button';
 import { motion } from 'framer-motion';
 import { HIP_NFT, NFT_ABI } from '../helper/contract';

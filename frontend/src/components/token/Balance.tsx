@@ -85,6 +85,10 @@ export default function Balance() {
           Get Votes
         </Button>
       </div>
+
+      {result? <div>
+        <p>Result: {result}</p>
+      </div>: <></>}
     </CommonCard>
   );
 }
