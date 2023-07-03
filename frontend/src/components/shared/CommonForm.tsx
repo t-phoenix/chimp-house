@@ -24,8 +24,8 @@ const CommonForm = ({
 }) => {
   return (
     <form onSubmit={onFormSubmit}>
-      <fieldset className='bg-accent rounded p-8 m-4 lg:m-20'>
-        <legend className='bg-secondary px-4 py-2 rounded uppercase font-bold text-2xl text-white border-white border'>
+      <fieldset className='bg-accent rounded-lg p-8 m-4 lg:m-20'>
+        <legend className='bg-secondary px-4 py-2 rounded-lg uppercase font-bold text-2xl text-white border-white border'>
           {legendTitle}
         </legend>
 

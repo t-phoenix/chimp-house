@@ -1,12 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ['class'],
-  content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     container: {
       center: true,
@@ -89,7 +84,7 @@ module.exports = {
           hsl(40deg 100% 44%) 71%,
           hsl(40deg 100% 48%) 100%
         );`,
-        'blue-mesh': 'url("frontend/src/assets/mesh-712.png")',
+        'blue-mesh': 'url("mesh-712.png")',
       },
       listStyleImage: {
         'check-circle': 'url("/frontend/src/assets/check-circle.svg")',

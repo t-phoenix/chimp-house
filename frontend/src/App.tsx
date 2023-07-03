@@ -11,7 +11,7 @@ import NFTPage from './pages/NFTPage';
 
 function App() {
   return (
-    <div className='min-h-screen flex justify-start content-center flex-col bg-background'>
+    <div className='min-h-screen flex justify-start content-center flex-col bg-blue-mesh bg-cover bg-no-repeat bg-origin-border'>
       {/* Navigation Bar - common */}
       <Navbar />
 

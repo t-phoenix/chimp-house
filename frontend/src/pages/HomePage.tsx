@@ -1,4 +1,5 @@
 import ChimpHouseIntroSection from '../components/sections/ChimpHouseIntroSection';
+import Footer from '../components/sections/Footer';
 import HeroSection from '../components/sections/HeroSection';
 import RoadmapSection from '../components/sections/RoadmapSection';
 
@@ -8,6 +9,7 @@ function HomePage() {
       <HeroSection />
       <ChimpHouseIntroSection />
       <RoadmapSection />
+      <Footer />
     </div>
   );
 }

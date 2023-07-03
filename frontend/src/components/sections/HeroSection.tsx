@@ -12,7 +12,7 @@ function HeroSection() {
   const [typingAnimationTextColor, setTypingAnimationTextColor] = useState('');
 
   return (
-    <section className='min-h-[90vh] flex flex-col justify-center content-center bg-background'>
+    <section className='min-h-[90vh] flex flex-col justify-center content-center'>
       <motion.div
         animate={{
           scale: HERO_HEADING_FINAL_SCALE,
@@ -79,7 +79,7 @@ function HeroSection() {
               () => setTypingAnimationTextColor('darkorange'),
               'Musicians',
               1000,
-              () => setTypingAnimationTextColor('darkslateblue'),
+              () => setTypingAnimationTextColor('white'),
               'Technologists',
               1000,
               () => setTypingAnimationTextColor('firebrick'),
