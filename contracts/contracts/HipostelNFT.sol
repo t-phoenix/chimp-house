@@ -1,49 +1,42 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract HipostekNFT is ERC721 {
+contract Hippy is ERC721, ERC721Enumerable, Ownable {
     using Counters for Counters.Counter;
-    Counters.Counter private _tokenIds;
 
-    uint256 public constant MINTING_FEE = 800 ether;
+    Counters.Counter private _tokenIdCounter;
 
-    address payable public owner;
-
-    constructor() ERC721("HipostelNFT", "HIPPY") {
-        owner = payable(msg.sender);
-    }
+    constructor() ERC721("Hippy", "HIP") {}
 
     function _baseURI() internal pure override returns (string memory) {
-        return "https://gray-quintessential-jellyfish-921.mypinata.cloud/ipfs/QmWFratCdRSLCMAamZWC7bvzTsHnpvhth7D4pn5Nsis9H7/";
+        return "ipfs://QmYj6Bg3JsMefu5iKcJbVdWaNabqSf6BxsbkHU79zRUwZX";
     }
 
-
-    function mintNFT() external payable {
-        require(msg.value >= MINTING_FEE, "Insufficient payment");
-
-        _tokenIds.increment();
-        uint256 newTokenId = _tokenIds.current();
-
-        _safeMint(msg.sender, newTokenId);
+    function safeMint(address to) public onlyOwner {
+        uint256 tokenId = _tokenIdCounter.current();
+        _tokenIdCounter.increment();
+        _safeMint(to, tokenId);
     }
 
-    function privateMint() external {
-        require(msg.sender == owner, "Only the contract owner can call this function");
-        _tokenIds.increment();
-        uint256 newTokenId = _tokenIds.current();
+    // The following functions are overrides required by Solidity.
 
-        _safeMint(msg.sender, newTokenId);
+    function _beforeTokenTransfer(
+        address from,
+        address to,
+        uint256 tokenId,
+        uint256 batchSize
+    ) internal override(ERC721, ERC721Enumerable) {
+        super._beforeTokenTransfer(from, to, tokenId, batchSize);
     }
 
-    function withdraw() external {
-        require(msg.sender == owner, "Only the contract owner can call this function");
-
-        uint256 contractBalance = address(this).balance;
-        require(contractBalance > 0, "No balance to withdraw");
-
-        owner.transfer(contractBalance);
+    function supportsInterface(
+        bytes4 interfaceId
+    ) public view override(ERC721, ERC721Enumerable) returns (bool) {
+        return super.supportsInterface(interfaceId);
     }
 }
